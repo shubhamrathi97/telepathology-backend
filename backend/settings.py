@@ -100,9 +100,18 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default_sq': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ATOMIC_REQUESTS':True,
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'telepathology',
+        'USER': 'shubhamMaster',
+        'PASSWORD': 'vOr92oZu4bKs0ma3D30W',
+        'HOST': 'telepathology.cgqbwkke33gy.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432',
         'ATOMIC_REQUESTS':True,
     }
 }
