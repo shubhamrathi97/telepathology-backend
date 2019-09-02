@@ -1,10 +1,10 @@
-version: "1"
+version: "2"
 services:
   nginx:
     image: nginx:latest
     container_name: ng01
     ports:
-      - "8000:8000"
+      - "80:8000"
     volumes:
       - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
