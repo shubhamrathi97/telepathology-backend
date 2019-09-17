@@ -25,6 +25,7 @@ SECRET_KEY = '0=q#3i$-wcz^n677s5+2g+wosh&=z0cymv#4aga#en#(%=uprw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
 ALLOWED_HOSTS = ['*']
 
 AWS_SECRET_KEY = 'LY/YP4EFpLO7T0Sm1thTfK6LmgxmgGBYYKKN4D9p'

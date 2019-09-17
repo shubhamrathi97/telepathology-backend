@@ -1,0 +1,44 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: ng01
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/src
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./certbot-etc:/etc/letsencrypt
+      - ./certbot-var:/var/lib/letsencrypt 
+      - ./web-root:/var/www/html
+    depends_on:
+      - web
+    restart: unless-stopped
+    networks: 
+      - appnetwork
+  web:
+    build: .
+    container_name: dg01
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn backend.wsgi -b 0.0.0.0:8000"
+    volumes:
+      - ./src:/src
+    expose:
+      - "8000"
+    restart: unless-stopped
+    networks: 
+      - appnetwork
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot-etc:/etc/letsencrypt
+      - ./certbot-var:/var/lib/letsencrypt
+      - ./web-root:/var/www/html
+    depends_on:
+      - nginx
+    command: certonly --webroot -webroot-path=/var/www/html --email shubham.rathi97@gmail.com --agree-tos --no-eff-email --staging -d telepathology.ml -d *.telepathology.ml
+
+networks:
+  appnetwork:
+    driver: bridge
+
