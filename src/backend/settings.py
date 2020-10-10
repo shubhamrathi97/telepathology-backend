@@ -107,10 +107,10 @@ DATABASES = {
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'telepathology',
-        'USER': 'shubhamMaster',
-        'PASSWORD': 'vOr92oZu4bKs0ma3D30W',
-        'HOST': 'telepathology.cgqbwkke33gy.ap-south-1.rds.amazonaws.com',
+        'NAME': 'telepathology_db',
+        'USER': 'temp_user',
+        'PASSWORD': 'temp_user',
+        'HOST': 'localhost',
         'PORT': '5432',
         'ATOMIC_REQUESTS':True,
     }
