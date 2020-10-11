@@ -1,5 +1,1 @@
-DB Master - shubhamMaster
-Password- vOr92oZu4bKs0ma3D30W
-
-telepathology
-vOr92oZu4bKs0ma3D30W
+Endpoint API - https://arcane-retreat-58418.herokuapp.com/
