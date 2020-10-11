@@ -115,6 +115,19 @@ DATABASES = {
         'ATOMIC_REQUESTS':True,
     }
 }
+if os.getenv('DATABASE_URL') and os.getenv('DATABASE_URL').startswith('postgres'):
+    # postgres://USER:PASSWORD@HOST:PORT/NAME
+    db_url = os.getenv('DATABASE_URL')
+    
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': db_url.split('/')[-1].strip(),
+        'USER': db_url.split(':')[1].split('/')[-1].strip(),
+        'PASSWORD': db_url.split(':')[2].split('@')[0].strip(),
+        'HOST': db_url.split(':')[2].split('@')[-1].strip(),
+        'PORT': int(db_url.split(':')[3].split('/')[0].strip()),
+        'ATOMIC_REQUESTS':True,
+    }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
