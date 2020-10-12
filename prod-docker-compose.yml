@@ -4,6 +4,14 @@ services:
     build: .
     container_name: dg01
     command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn backend.wsgi -b 0.0.0.0:8000"
+    environment:
+      - DATABASE_URL=postgres_url
+      - DEBUG_DJANGO=true
+      - AWS_SECRET_KEY=secret_key
+      - AWS_ACCESS_KEY=access_key
+      - AWS_S3_REGION=region
+      - S3_ENV=test
+      - BUCKET_NAME=test-bucket
     volumes:
       - ./src:/src
     expose:
@@ -31,4 +39,3 @@ services:
     restart: unless-stopped
     depends_on:
       - web
-

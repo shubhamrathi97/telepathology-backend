@@ -1,0 +1,29 @@
+upstream web {  
+  ip_hash;
+  server web:8000;
+}
+
+server {
+    client_max_body_size 300M;
+    
+    root /var/www/html;
+    index index.html index.htm;
+
+    location ~ /.well-known/acme-challenge {
+	allow all;
+	root /var/www/html;
+    }
+
+    location /static/ {    
+        autoindex on;    
+        alias /src/static/; 
+    }
+
+    location / {
+        proxy_pass http://web/;
+    }
+    
+    listen 80;
+    listen [::]:80;
+    server_name telepathology.ml *.telepathology.ml;
+}

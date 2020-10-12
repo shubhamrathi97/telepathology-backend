@@ -24,14 +24,13 @@ SECRET_KEY = '0=q#3i$-wcz^n677s5+2g+wosh&=z0cymv#4aga#en#(%=uprw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG_DJANGO', 'true').lower() in ['true', 1, 'yes', 'y',]
-
 ALLOWED_HOSTS = ['*']
 
-AWS_SECRET_KEY = 'LY/YP4EFpLO7T0Sm1thTfK6LmgxmgGBYYKKN4D9p'
-AWS_ACCESS_KEY = 'AKIAQ6C6U3FK2VIDW5EZ'
-AWS_S3_REGION = 'ap-south-1'
-S3_ENV = 'test'
-BUCKET_NAME = 'telepathology'
+AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
+AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
+AWS_S3_REGION = os.getenv('AWS_S3_REGION')
+S3_ENV = os.getenv('S3_ENV')
+BUCKET_NAME = os.getenv('BUCKET_NAME')
 
 # Application definition
 INSTALLED_APPS = [
