@@ -1,4 +1,9 @@
-# Telepathology Django REST Backend
+# Telepathology Django Backend
+
+Telepathology-backend is Django REST APIs created to support a mini digital microscope that will help in remote pathology sample collection and reporting. Developed the application as MVP for early stage startup. As the startup no longer working on product, I have open source the project. 
+
+Backend Deployed on Heroku and Frontend is deploy on Netlify. You can view the credential to login and preview application in frontend repository. 
+Telepathology Frontend Git Repo - https://github.com/shubhamrathi97/telepathology-frontend
 
 ## FEATURES
 
